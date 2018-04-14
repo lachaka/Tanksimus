@@ -1,20 +1,22 @@
 package org.elsys.ip.resource;
 
 import org.elsys.ip.models.Tank;
+import org.elsys.ip.service.TankService;
 
 import javax.ws.rs.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Path("/tank")
 public class TankResource {
 
+    private TankService tankService = new TankService();
+
     @GET
-    public List<Tank> getTanksList() { return new ArrayList<>(); }
+    public List<Tank> getTanksList() { return tankService.getTanks(); }
 
     @GET
     @Path("/tank/{id}")
-    public Tank getTankByID() { return null; }
+    public Tank getTankByID(@PathParam("id") Integer id) { return tankService.getTankById(id); }
 
     @POST
     @Path("/tank/add")

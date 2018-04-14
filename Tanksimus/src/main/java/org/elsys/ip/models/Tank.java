@@ -49,7 +49,9 @@ public class Tank {
     public Tank() {
     }
 
-    public Tank(String name, float speed, float length, float width, float height, float weight, int crew, int engineId, int countryId, int producer_id, int typeId, int availability) {
+    public Tank(String name, float speed, float length, float width, float height,
+                float weight, int crew, int engineId, int countryId,
+                int producer_id, int typeId, int availability) {
         this.name = name;
         this.speed = speed;
         this.length = length;
