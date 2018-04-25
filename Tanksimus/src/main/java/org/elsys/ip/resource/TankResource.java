@@ -12,6 +12,7 @@ public class TankResource {
     private TankService tankService = new TankService();
 
     @GET
+    @Produces("application/json")
     public List<Tank> getTanksList() { return tankService.getTanks(); }
 
     @GET
@@ -20,13 +21,15 @@ public class TankResource {
 
     @POST
     @Path("/tank/add")
-    public Tank saveTank() { return null; }
+    public boolean saveTank(Tank tank) { return tankService.saveTank(tank); }
 
     @PUT
     @Path("/tank/{id}/update")
-    public Tank updateTank() { return null; }
+    public Tank updateTank(@PathParam("id") Integer id, Tank tank) { return tankService.updateTank(id, tank); }
 
     @DELETE
     @Path("/tank/{id}/delete")
-    public boolean deleteTank() { return false; }
+    public boolean deleteTank(@PathParam("id") Integer id) { return tankService.deleteTank(id); }
+
+    //@POST for /tank/{id}/rent with duration as parameter
 }

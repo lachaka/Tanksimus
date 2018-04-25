@@ -1,15 +1,23 @@
 package org.elsys.ip.repository;
 
+import org.elsys.ip.config.HibernateUtil;
 import org.elsys.ip.models.Tank;
+import org.hibernate.Session;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class TankRepository {
     private List<Tank> tankList = new ArrayList<> ();
 
     public List<Tank> getTankList() {
+        List<Tank> tankList;
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        tankList = session.createQuery("from Tank").list();
+
         return tankList;
     }
 
