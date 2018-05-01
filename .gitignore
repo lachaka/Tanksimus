@@ -11,3 +11,11 @@
 **/gradlew.bat
 **/gradlew
 **/gradle
+
+dist/
+**/node_modules/
+**/npm-debug.log*
+**/yarn-error.log*
+**/jsconfig.json
+**/.vscode/
+**/typings/
