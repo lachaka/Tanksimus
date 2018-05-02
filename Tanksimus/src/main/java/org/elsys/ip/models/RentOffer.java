@@ -7,7 +7,7 @@ import java.util.Date;
 @Table(name = "rent_offer")
 public class RentOffer {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -29,52 +29,48 @@ public class RentOffer {
     public RentOffer() {
     }
 
+    public void update(RentOffer rentOffer) {
+        this.tankId = rentOffer.getTankId();
+        this.description = rentOffer.getDescription();
+        this.price = rentOffer.getPrice();
+        this.time = rentOffer.getTime();
+        this.userId = rentOffer.getUserId();
+    }
+
     public int getId() {
         return id;
     }
-
     public void rent() {}
-
     public void setId(int id) {
         this.id = id;
     }
-
     public int getTankId() {
         return tankId;
     }
-
     public void setTankId(int tankId) {
         this.tankId = tankId;
     }
-
     public String getDescription() {
         return description;
     }
-
     public void setDescription(String description) {
         this.description = description;
     }
-
     public float getPrice() {
         return price;
     }
-
     public void setPrice(float price) {
         this.price = price;
     }
-
     public Date getTime() {
         return time;
     }
-
     public void setTime(Date time) {
         this.time = time;
     }
-
     public int getUserId() {
         return userId;
     }
-
     public void setUserId(int userId) {
         this.userId = userId;
     }

@@ -1,28 +1,51 @@
 package org.elsys.ip.repository;
 
+import org.elsys.ip.config.HibernateUtil;
 import org.elsys.ip.models.RentOffer;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.util.List;
 
 public class RentOfferRepository {
     public List<RentOffer> getRentOffers() {
-        return null;
+        List<RentOffer> rentOffers;
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        rentOffers = session.createQuery("from RentOffer ").list();
+
+        return rentOffers;
     }
 
     public RentOffer getRentOfferById(Integer id) {
-        return null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        return session.get(RentOffer.class, id);
     }
 
-    public boolean saveRentOffer(RentOffer rentOffer) {
-        return false;
+    public void saveRentOffer(RentOffer rentOffer) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        session.save("RentOffer", rentOffer);
+        tx.commit();
     }
 
     public RentOffer updateRentOffer(Integer id, RentOffer rentOffer) {
-        return null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        RentOffer persistentRentOffer = getRentOfferById(id);
+        session.evict(persistentRentOffer);
+        persistentRentOffer.update(rentOffer);
+        RentOffer updated = (RentOffer)session.merge(persistentRentOffer);
+        tx.commit();
+        return updated;
     }
 
-    public boolean deleteRentOffer(Integer id) {
-        return false;
+    public void deleteRentOffer(Integer id) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        RentOffer persistentRentOffer = getRentOfferById(id);
+        session.delete(persistentRentOffer);
+        tx.commit();
     }
 
     public List<RentOffer> getRentOffersByName() {
