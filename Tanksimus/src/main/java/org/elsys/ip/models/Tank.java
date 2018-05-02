@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "tank")
 public class Tank {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -31,27 +31,30 @@ public class Tank {
     @Column(name = "crew")
     private int crew;
 
-    @Column(name = "engine_id")
-    private int engineId;
+    @Column(name = "engine")
+    private String engine;
 
-    @Column(name = "country_id")
-    private int countryId;
+    @Column(name = "country")
+    private String country;
 
-    @Column(name = "producer_id")
-    private int producer_id;
+    @Column(name = "producer")
+    private String producer;
 
-    @Column(name = "type_id")
-    private int typeId;
+    @Column(name = "type")
+    private String type;
 
     @Column(name = "availability")
     private int availability;
+
+    @Column(name = "power")
+    private int power;
 
     public Tank() {
     }
 
     public Tank(String name, float speed, float length, float width, float height,
-                float weight, int crew, int engineId, int countryId,
-                int producer_id, int typeId, int availability) {
+                float weight, int crew, String engine, String country,
+                String producer, String type, int availability, int power) {
         this.name = name;
         this.speed = speed;
         this.length = length;
@@ -59,11 +62,28 @@ public class Tank {
         this.height = height;
         this.weight = weight;
         this.crew = crew;
-        this.engineId = engineId;
-        this.countryId = countryId;
-        this.producer_id = producer_id;
-        this.typeId = typeId;
+        this.engine = engine;
+        this.country = country;
+        this.producer = producer;
+        this.type = type;
         this.availability = availability;
+        this.power = power;
+    }
+
+    public void update(Tank tank) {
+        this.name = tank.getName();
+        this.speed = tank.getSpeed();
+        this.length = tank.getLength();
+        this.width = tank.getWidth();
+        this.height = tank.getHeight();
+        this.weight = tank.getWeight();
+        this.crew = tank.getCrew();
+        this.engine = tank.getEngine();
+        this.country = tank.getCountry();
+        this.producer = tank.getProducer();
+        this.type = tank.getType();
+        this.availability = tank.getAvailability();
+        this.power = tank.getPower();
     }
 
     public void rentTank() {}
@@ -71,104 +91,86 @@ public class Tank {
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
-
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public float getSpeed() {
         return speed;
     }
-
     public void setSpeed(float speed) {
         this.speed = speed;
     }
-
     public float getLength() {
         return length;
     }
-
     public void setLength(float length) {
         this.length = length;
     }
-
     public float getWidth() {
         return width;
     }
-
     public void setWidth(float width) {
         this.width = width;
     }
-
     public float getHeight() {
         return height;
     }
-
     public void setHeight(float height) {
         this.height = height;
     }
-
     public float getWeight() {
         return weight;
     }
-
     public void setWeight(float weight) {
         this.weight = weight;
     }
-
     public int getCrew() {
         return crew;
     }
-
     public void setCrew(int crew) {
         this.crew = crew;
     }
-
-    public int getEngineId() {
-        return engineId;
+    public String getEngine() {
+        return engine;
     }
-
-    public void setEngineId(int engineId) {
-        this.engineId = engineId;
+    public void setEngine(String engine) {
+        this.engine = engine;
     }
-
-    public int getCountryId() {
-        return countryId;
+    public String getCountry() {
+        return country;
     }
-
-    public void setCountryId(int countryId) {
-        this.countryId = countryId;
+    public void setCountry(String country) {
+        this.country = country;
     }
-
-    public int getProducer_id() {
-        return producer_id;
+    public String getProducer() {
+        return producer;
     }
-
-    public void setProducer_id(int producer_id) {
-        this.producer_id = producer_id;
+    public void setProducer(String producer) {
+        this.producer = producer;
     }
-
-    public int getTypeId() {
-        return typeId;
+    public String getType() {
+        return type;
     }
-
-    public void setTypeId(int typeId) {
-        this.typeId = typeId;
+    public void setType(String type) {
+        this.type = type;
     }
-
     public int getAvailability() {
         return availability;
     }
-
     public void setAvailability(int availability) {
         this.availability = availability;
     }
+    public int getPower() {
+        return power;
+    }
+    public void setPower(int power) {
+        this.power = power;
+    }
+
 }

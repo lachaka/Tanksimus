@@ -1,5 +1,7 @@
 package org.elsys.ip.resource;
 
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.jaxrs.annotation.JacksonFeatures;
 import org.elsys.ip.models.Tank;
 import org.elsys.ip.service.TankService;
 
@@ -13,23 +15,30 @@ public class TankResource {
 
     @GET
     @Produces("application/json")
+    @JacksonFeatures(serializationEnable = {SerializationFeature.INDENT_OUTPUT})
     public List<Tank> getTanksList() { return tankService.getTanks(); }
 
     @GET
-    @Path("/tank/{id}")
+    @Path("/{id}")
+    @Produces("application/json")
+    @JacksonFeatures(serializationEnable = {SerializationFeature.INDENT_OUTPUT})
     public Tank getTankByID(@PathParam("id") Integer id) { return tankService.getTankById(id); }
 
     @POST
-    @Path("/tank/add")
-    public boolean saveTank(Tank tank) { return tankService.saveTank(tank); }
+    @Consumes("application/json")
+    public void saveTank(Tank tank) {
+        tankService.saveTank(tank); }
 
     @PUT
-    @Path("/tank/{id}/update")
+    @Path("/{id}")
+    @Consumes("application/json")
+    @Produces("application/json")
+    @JacksonFeatures(serializationEnable = {SerializationFeature.INDENT_OUTPUT})
     public Tank updateTank(@PathParam("id") Integer id, Tank tank) { return tankService.updateTank(id, tank); }
 
     @DELETE
-    @Path("/tank/{id}/delete")
-    public boolean deleteTank(@PathParam("id") Integer id) { return tankService.deleteTank(id); }
+    @Path("/{id}")
+    public void deleteTank(@PathParam("id") Integer id) { tankService.deleteTank(id); }
 
     //@POST for /tank/{id}/rent with duration as parameter
 }

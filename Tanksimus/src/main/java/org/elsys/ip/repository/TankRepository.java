@@ -3,38 +3,52 @@ package org.elsys.ip.repository;
 import org.elsys.ip.config.HibernateUtil;
 import org.elsys.ip.models.Tank;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TankRepository {
-    private List<Tank> tankList = new ArrayList<> ();
-
     public List<Tank> getTankList() {
         List<Tank> tankList;
 
         Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-
         tankList = session.createQuery("from Tank").list();
 
         return tankList;
     }
 
     public Tank getTankById(Integer id) {
-        return tankList.get(id);
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        return session.get(Tank.class, id);
     }
 
-    public boolean saveTank(Tank tank) {
-        return tankList.add(tank);
+    public void saveTank(Tank tank) {
+        System.out.println(tank.getId() + ", " + tank.getName());
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        session.save("Tank", tank);
+        tx.commit();
     }
 
     public Tank updateTank(Integer id, Tank tank) {
-        return tankList.set(id, tank);
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        Tank persistentTank = getTankById(id);
+        session.evict(persistentTank);
+        persistentTank.update(tank);
+        Tank updated = (Tank)session.merge(persistentTank);
+        tx.commit();
+        return updated;
     }
 
-    public boolean deleteTank(Integer id) {
-        return tankList.remove(id);
+    public void deleteTank(Integer id) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        Tank persistentTank = getTankById(id);
+        session.delete(persistentTank);
+        tx.commit();
     }
 
 }
