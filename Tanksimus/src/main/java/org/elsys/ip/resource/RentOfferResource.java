@@ -20,7 +20,7 @@ public class RentOfferResource {
 
     @POST
     @Path("/rent_offer")
-    public boolean saveTank(RentOffer rentOffer) { return rentOfferService.saveRentOffer(rentOffer); }
+    public void saveTank(RentOffer rentOffer) { rentOfferService.saveRentOffer(rentOffer); }
 
     @PUT
     @Path("/rent_offer/{id}")
@@ -28,5 +28,5 @@ public class RentOfferResource {
 
     @DELETE
     @Path("/rent_offer/{id}/delete")
-    public boolean deleteTank(@PathParam("id") Integer id) { return rentOfferService.deleteRentOffer(id); }
+    public void deleteTank(@PathParam("id") Integer id) { rentOfferService.deleteRentOffer(id); }
 }
