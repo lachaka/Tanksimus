@@ -2,7 +2,6 @@ package org.elsys.ip.models;
 
 import javax.persistence.*;
 import java.sql.Time;
-import java.util.Date;
 
 @Entity
 @Table(name = "rent_offer")
@@ -12,8 +11,9 @@ public class RentOffer {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "tank_id")
-    private int tankId;
+    @OneToOne
+    @JoinColumn(name = "tank_id")
+    private Tank tank;
 
     @Column(name = "description")
     private String description;
@@ -21,14 +21,14 @@ public class RentOffer {
     @Column(name = "price")
     private float price;
 
-    @Column(name = "time")
+    @Column(name = "upload_time")
     private Time time;
 
     public RentOffer() {
     }
 
     public void update(RentOffer rentOffer) {
-        this.tankId = rentOffer.getTankId();
+        this.tank = rentOffer.getTank();
         this.description = rentOffer.getDescription();
         this.price = rentOffer.getPrice();
         this.time = rentOffer.getTime();
@@ -41,11 +41,11 @@ public class RentOffer {
     public void setId(int id) {
         this.id = id;
     }
-    public int getTankId() {
-        return tankId;
+    public Tank getTank() {
+        return tank;
     }
-    public void setTankId(int tankId) {
-        this.tankId = tankId;
+    public void setTank(Tank tank) {
+        this.tank = tank;
     }
     public String getDescription() {
         return description;
