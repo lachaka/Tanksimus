@@ -10,5 +10,6 @@
         <mapping class="org.elsys.ip.models.Tank"/>
         <mapping class="org.elsys.ip.models.RentOffer"/>
         <mapping class="org.elsys.ip.models.User"/>
+        <mapping class="org.elsys.ip.models.Notification"/>
     </session-factory>
 </hibernate-configuration>

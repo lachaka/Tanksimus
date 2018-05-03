@@ -1,6 +1,7 @@
 package org.elsys.ip.repository;
 
 import org.elsys.ip.config.HibernateUtil;
+import org.elsys.ip.models.Notification;
 import org.elsys.ip.models.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -49,5 +50,13 @@ public class UserRepository {
         session.delete(persistentUser);
         tx.commit();
         session.close();
+    }
+
+    public List<Notification> getNotificationsByUserId(Integer id) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        System.out.println(((Notification)session.createQuery("from Notification").list().get(0)).getMessage());
+        List<Notification> notifications = session.createQuery("from Notification where Notification.receiver.id = " + id).list();
+        session.close();
+        return notifications;
     }
 }

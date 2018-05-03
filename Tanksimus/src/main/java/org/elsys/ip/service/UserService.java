@@ -1,5 +1,6 @@
 package org.elsys.ip.service;
 
+import org.elsys.ip.models.Notification;
 import org.elsys.ip.models.User;
 import org.elsys.ip.repository.UserRepository;
 
@@ -12,4 +13,5 @@ public class UserService {
     public void saveUser(User user) { userRepository.saveUser(user); }
     public User updateUser(Integer id, User user) { return userRepository.updateUser(id, user); }
     public void deleteUser(Integer id) { userRepository.deleteUser(id); }
+    public List<Notification> getNotificationsByUserId(Integer id) { return userRepository.getNotificationsByUserId(id); }
 }
