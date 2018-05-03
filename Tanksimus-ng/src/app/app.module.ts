@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpModule } from '@angular/http';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { TankComponent } from './tank/tank.component';
 import { ListedOfferComponent } from './listed-offer/listed-offer.component';
 import { NavigationComponent } from './navigation/navigation.component';
+
 
 import {
     SocialLoginModule,
@@ -45,7 +47,8 @@ export function getAuthServiceConfigs() {
     BrowserModule,
     AppRoutingModule,
     SocialLoginModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    HttpModule
   ],
   providers: [
     {
