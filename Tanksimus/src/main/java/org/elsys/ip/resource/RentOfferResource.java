@@ -1,5 +1,7 @@
 package org.elsys.ip.resource;
 
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.jaxrs.annotation.JacksonFeatures;
 import org.elsys.ip.models.RentOffer;
 import org.elsys.ip.service.RentOfferService;
 
@@ -12,10 +14,12 @@ public class RentOfferResource {
 
     @GET
     @Produces("application/json")
+    @JacksonFeatures(serializationEnable = {SerializationFeature.INDENT_OUTPUT})
     public List<RentOffer> getTanksList() { return rentOfferService.getRentOffers(); }
 
     @GET
     @Path("/{id}")
+    @JacksonFeatures(serializationEnable = {SerializationFeature.INDENT_OUTPUT})
     public RentOffer getTankByID(@PathParam("id") Integer id) { return rentOfferService.getRentOfferById(id); }
 
     @POST

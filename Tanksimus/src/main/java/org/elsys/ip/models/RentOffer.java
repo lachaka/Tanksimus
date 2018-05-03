@@ -1,6 +1,7 @@
 package org.elsys.ip.models;
 
 import javax.persistence.*;
+import java.sql.Time;
 import java.util.Date;
 
 @Entity
@@ -21,10 +22,7 @@ public class RentOffer {
     private float price;
 
     @Column(name = "time")
-    private Date time;
-
-    @Column(name = "user_id")
-    private int userId;
+    private Time time;
 
     public RentOffer() {
     }
@@ -34,7 +32,6 @@ public class RentOffer {
         this.description = rentOffer.getDescription();
         this.price = rentOffer.getPrice();
         this.time = rentOffer.getTime();
-        this.userId = rentOffer.getUserId();
     }
 
     public int getId() {
@@ -62,16 +59,10 @@ public class RentOffer {
     public void setPrice(float price) {
         this.price = price;
     }
-    public Date getTime() {
+    public Time getTime() {
         return time;
     }
-    public void setTime(Date time) {
+    public void setTime(Time time) {
         this.time = time;
-    }
-    public int getUserId() {
-        return userId;
-    }
-    public void setUserId(int userId) {
-        this.userId = userId;
     }
 }
