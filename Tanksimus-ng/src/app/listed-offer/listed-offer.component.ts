@@ -21,8 +21,7 @@ export class ListedOfferComponent implements OnInit {
   }
 
   getOffers() {
-    this.offerService.getOffers()
-      .subscribe(data => {
+    this.offerService.getOffers().subscribe(data => {
       this.offers = data;
       console.log(data);
     });

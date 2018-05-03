@@ -8,7 +8,7 @@ import { ViewOfferComponent } from './view-offer/view-offer.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'rent_offer/:offerId', component: ViewOfferComponent},
+  {path: 'tank-offer/:id', component: ViewOfferComponent},
   {path: 'login', component: SigninComponent}
 ];
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import {HttpClientModule, HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 
 @Injectable()
@@ -15,17 +15,16 @@ export class OfferService {
   constructor(private http: HttpClient) { }
 
   getOffers() {
-    return this.http.get<Offer[]>(`http://localhost:8080/api/rent_offer`);
+    return this.http.get<Offer[]>(`http://localhost:8080/api/rent-offer`);
   }
 
   getOfferById(offerId) {
-      return this.http.get<Offer>(`http://localhost:8080/rent_offer/${offerId}`)
+      return this.http.get<Offer>(`http://localhost:8080/api/rent-offer/${offerId}`)
   }
 }
 
 export interface Offer {
   id;
-  tankId?;
   Tank?;
   description?;
   price?;
