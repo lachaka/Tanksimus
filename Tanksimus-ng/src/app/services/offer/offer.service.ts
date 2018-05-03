@@ -18,17 +18,32 @@ export class OfferService {
     return this.http.get<Offer[]>(`http://localhost:8080/api/rent_offer`);
   }
 
-  /*
-    getOffers() {
-      return this.http.get<Offer>(`localhost:8080` + `rent_offer/${playerId}`);
-    }
-*/
+  getOfferById(offerId) {
+      return this.http.get<Offer>(`http://localhost:8080/rent_offer/${offerId}`)
+  }
 }
 
 export interface Offer {
   id;
   tankId?;
+  Tank?;
   description?;
   price?;
   time?;
+}
+
+export interface Tank {
+    id;
+    name;
+    speed;
+    length;
+    width;
+    height;
+    weight;
+    crew;
+    engine;
+    country;
+    producer;
+    type;
+    power;
 }

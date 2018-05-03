@@ -1,5 +1,7 @@
 package org.elsys.ip.models;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import java.sql.Time;
 
@@ -21,6 +23,8 @@ public class RentOffer {
     @Column(name = "price")
     private float price;
 
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "upload_time")
     private Time time;
 
