@@ -23,8 +23,6 @@ public class RentOffer {
     @Column(name = "price")
     private float price;
 
-    @CreationTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "upload_time")
     private Time time;
 

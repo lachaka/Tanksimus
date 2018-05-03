@@ -43,9 +43,6 @@ public class Tank {
     @Column(name = "type")
     private String type;
 
-    @Column(name = "availability")
-    private int availability;
-
     @Column(name = "power")
     private int power;
 
@@ -66,7 +63,6 @@ public class Tank {
         this.country = country;
         this.producer = producer;
         this.type = type;
-        this.availability = availability;
         this.power = power;
     }
 
@@ -82,7 +78,6 @@ public class Tank {
         this.country = tank.getCountry();
         this.producer = tank.getProducer();
         this.type = tank.getType();
-        this.availability = tank.getAvailability();
         this.power = tank.getPower();
     }
 
@@ -159,12 +154,6 @@ public class Tank {
     }
     public void setType(String type) {
         this.type = type;
-    }
-    public int getAvailability() {
-        return availability;
-    }
-    public void setAvailability(int availability) {
-        this.availability = availability;
     }
     public int getPower() {
         return power;

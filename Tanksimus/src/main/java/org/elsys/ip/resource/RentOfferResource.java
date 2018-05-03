@@ -15,7 +15,9 @@ public class RentOfferResource {
     @GET
     @Produces("application/json")
     @JacksonFeatures(serializationEnable = {SerializationFeature.INDENT_OUTPUT})
-    public List<RentOffer> getTanksList() { return rentOfferService.getRentOffers(); }
+    public List<RentOffer> getTanksList() {
+        return rentOfferService.getRentOffers();
+    }
 
     @GET
     @Path("/{id}")
