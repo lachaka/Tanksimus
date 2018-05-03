@@ -12,7 +12,7 @@ public class RentOfferRepository {
         List<RentOffer> rentOffers;
 
         Session session = HibernateUtil.getSessionFactory().openSession();
-        rentOffers = session.createQuery("from RentOffer ").list();
+        rentOffers = session.createQuery("from RentOffer ", RentOffer.class).list();
 
         return rentOffers;
     }

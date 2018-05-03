@@ -4,9 +4,6 @@ import org.elsys.ip.config.HibernateUtil;
 import org.elsys.ip.models.Tank;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
-import java.sql.PreparedStatement;
-import java.util.ArrayList;
 import java.util.List;
 
 public class TankRepository {

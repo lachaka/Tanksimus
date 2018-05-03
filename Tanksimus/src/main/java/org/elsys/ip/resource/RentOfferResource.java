@@ -15,18 +15,17 @@ public class RentOfferResource {
     public List<RentOffer> getTanksList() { return rentOfferService.getRentOffers(); }
 
     @GET
-    @Path("/rent_offer/{id}")
+    @Path("/{id}")
     public RentOffer getTankByID(@PathParam("id") Integer id) { return rentOfferService.getRentOfferById(id); }
 
     @POST
-    @Path("/rent_offer")
     public void saveTank(RentOffer rentOffer) { rentOfferService.saveRentOffer(rentOffer); }
 
     @PUT
-    @Path("/rent_offer/{id}")
+    @Path("/{id}")
     public RentOffer updateTank(@PathParam("id") Integer id, RentOffer rentOffer) { return rentOfferService.updateRentOffer(id, rentOffer); }
 
     @DELETE
-    @Path("/rent_offer/{id}/delete")
+    @Path("/{id}")
     public void deleteTank(@PathParam("id") Integer id) { rentOfferService.deleteRentOffer(id); }
 }

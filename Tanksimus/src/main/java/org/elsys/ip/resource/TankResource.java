@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.jaxrs.annotation.JacksonFeatures;
 import org.elsys.ip.models.Tank;
 import org.elsys.ip.service.TankService;
-
 import javax.ws.rs.*;
 import java.util.List;
 
@@ -27,7 +26,8 @@ public class TankResource {
     @POST
     @Consumes("application/json")
     public void saveTank(Tank tank) {
-        tankService.saveTank(tank); }
+        tankService.saveTank(tank);
+    }
 
     @PUT
     @Path("/{id}")
