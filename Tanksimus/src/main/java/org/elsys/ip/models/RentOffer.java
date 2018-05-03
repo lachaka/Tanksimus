@@ -3,6 +3,7 @@ package org.elsys.ip.models;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import javax.ws.rs.DELETE;
 import java.sql.Time;
 
 @Entity
@@ -26,7 +27,19 @@ public class RentOffer {
     @Column(name = "upload_time")
     private Time time;
 
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public RentOffer() {
+    }
+
+    public RentOffer(Tank tank, String description, float price, Time time, User user) {
+        this.tank = tank;
+        this.description = description;
+        this.price = price;
+        this.time = time;
+        this.user = user;
     }
 
     public void update(RentOffer rentOffer) {
@@ -34,6 +47,7 @@ public class RentOffer {
         this.description = rentOffer.getDescription();
         this.price = rentOffer.getPrice();
         this.time = rentOffer.getTime();
+        this.user = rentOffer.getUser();
     }
 
     public int getId() {
@@ -66,5 +80,13 @@ public class RentOffer {
     }
     public void setTime(Time time) {
         this.time = time;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

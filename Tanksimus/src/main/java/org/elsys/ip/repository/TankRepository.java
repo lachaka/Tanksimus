@@ -13,12 +13,15 @@ public class TankRepository {
         Session session = HibernateUtil.getSessionFactory().openSession();
         tankList = session.createQuery("from Tank").list();
 
+        session.close();
         return tankList;
     }
 
     public Tank getTankById(Integer id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        return session.get(Tank.class, id);
+        Tank tank = session.get(Tank.class, id);
+        session.close();
+        return tank;
     }
 
     public void saveTank(Tank tank) {
@@ -26,6 +29,7 @@ public class TankRepository {
         Transaction tx = session.beginTransaction();
         session.save("Tank", tank);
         tx.commit();
+        session.close();
     }
 
     public Tank updateTank(Integer id, Tank tank) {
@@ -36,6 +40,7 @@ public class TankRepository {
         persistentTank.update(tank);
         Tank updated = (Tank)session.merge(persistentTank);
         tx.commit();
+        session.close();
         return updated;
     }
 
@@ -45,6 +50,7 @@ public class TankRepository {
         Tank persistentTank = getTankById(id);
         session.delete(persistentTank);
         tx.commit();
+        session.close();
     }
 
 }

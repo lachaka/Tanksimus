@@ -9,5 +9,6 @@
         <property name="show_sql">true</property>
         <mapping class="org.elsys.ip.models.Tank"/>
         <mapping class="org.elsys.ip.models.RentOffer"/>
+        <mapping class="org.elsys.ip.models.User"/>
     </session-factory>
 </hibernate-configuration>
