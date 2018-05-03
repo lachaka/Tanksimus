@@ -10,15 +10,16 @@ import { OfferService, Offer } from '../services/offer/offer.service';
 })
 export class ListedOfferComponent implements OnInit {
 
-  private offers: Offer[];
+  private offers: Offer[] = [];
 
-  constructor( private OfferService: OfferService) { }
+  constructor( private offerService: OfferService) { }
 
   ngOnInit() {
+      this.getOffers();
   }
 
   getOffers() {
-    this.OfferService.getOffers()
+    this.offerService.getOffers()
       .subscribe(data => {
       this.offers = data;
       console.log(data);

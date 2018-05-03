@@ -15,7 +15,7 @@ export class OfferService {
   constructor(private http: HttpClient) { }
 
   getOffers() {
-    return this.http.get<Offer[]>(`localhost:8080/api/rent_offer`);
+    return this.http.get<Offer[]>(`http://localhost:8080/api/rent_offer`);
   }
 
   /*
@@ -27,8 +27,8 @@ export class OfferService {
 
 export interface Offer {
   id;
-  tankId;
-  description;
-  price;
-  time;
+  tankId?;
+  description?;
+  price?;
+  time?;
 }

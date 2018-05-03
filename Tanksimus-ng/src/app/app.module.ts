@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -48,7 +50,7 @@ export function getAuthServiceConfigs() {
     AppRoutingModule,
     SocialLoginModule,
     NgbModule.forRoot(),
-    HttpModule
+    HttpClientModule
   ],
   providers: [
     {
