@@ -23,6 +23,7 @@ import {
 } from "angular5-social-login";
 
 import { SigninComponent } from './signin/signin.component';
+import { ViewOfferComponent } from './view-offer/view-offer.component';
 
 export function getAuthServiceConfigs() {
   let config = new AuthServiceConfig(
@@ -43,7 +44,8 @@ export function getAuthServiceConfigs() {
     TankComponent,
     ListedOfferComponent,
     NavigationComponent,
-    SigninComponent
+    SigninComponent,
+    ViewOfferComponent
   ],
   imports: [
     BrowserModule,

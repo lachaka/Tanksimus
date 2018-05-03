@@ -11,8 +11,8 @@ import { OfferService, Offer } from '../services/offer/offer.service';
 export class ListedOfferComponent implements OnInit {
 
   private offers: Offer[] = [];
-  private description: String;
-  private price: typeOf(0.0);
+  private description: string;
+  private price: number;
 
   constructor( private offerService: OfferService) { }
 
