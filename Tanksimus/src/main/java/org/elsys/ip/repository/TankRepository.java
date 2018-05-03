@@ -22,7 +22,6 @@ public class TankRepository {
     }
 
     public void saveTank(Tank tank) {
-        System.out.println(tank.getId() + ", " + tank.getName());
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
         session.save("Tank", tank);

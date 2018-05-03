@@ -19,6 +19,7 @@ public class RentOfferResource {
 
     @GET
     @Path("/{id}")
+    @Produces("application/json")
     @JacksonFeatures(serializationEnable = {SerializationFeature.INDENT_OUTPUT})
     public RentOffer getTankByID(@PathParam("id") Integer id) { return rentOfferService.getRentOfferById(id); }
 
