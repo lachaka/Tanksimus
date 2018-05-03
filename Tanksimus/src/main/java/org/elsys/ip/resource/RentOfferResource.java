@@ -8,7 +8,7 @@ import org.elsys.ip.service.RentOfferService;
 import javax.ws.rs.*;
 import java.util.List;
 
-@Path("rent_offer")
+@Path("rent-offer")
 public class RentOfferResource {
     private RentOfferService rentOfferService = new RentOfferService();
 
